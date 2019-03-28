@@ -30,12 +30,9 @@ class HqRepairBaseDataServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::group([
-            'prefix' => config('horizon.uri', 'horizon'),
-            'namespace' => 'Laravel\Horizon\Http\Controllers',
-            'middleware' => config('horizon.middleware', 'web'),
-        ], function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-        });
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group($this->loadRoutesFrom(__DIR__ . '/routes/api.php'));
     }
 }
