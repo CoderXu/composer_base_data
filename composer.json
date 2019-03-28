@@ -14,7 +14,8 @@
     "autoload": {
         "psr-4": {
             "App\\Model\\DB\\Mysql\\": "src/Model/Mysql/",
-            "App\\Http\\Controllers\\": "src/Controller/"
+            "App\\Http\\Controllers\\": "src/Controller/",
+            "HqRepair\\BaseData\\": "src/"
         }
     },
     "minimum-stability": "dev"
