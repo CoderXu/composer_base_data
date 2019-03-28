@@ -191,4 +191,50 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 get('search', 'PaymentTermController@search')
                     ->name('付款条款搜索');
             });
+
+        // 发票方式管理
+        Route::prefix('invoice_mode')
+            ->group(function () {
+                Route::/*middleware(['permission:invoice_mode_create'])->*/
+                post('create', 'InvoiceModeController@create')
+                    ->name('创建发票方式');
+                Route::/*middleware(['permission:invoice_mode_update'])->*/
+                post('update', 'InvoiceModeController@update')
+                    ->name('更新发票方式');
+                Route::/*middleware(['permission:invoice_mode_query'])->*/
+                get('query/{id}', 'InvoiceModeController@query')
+                    ->name('根据ID查询发票方式');
+                Route::/*middleware(['permission:invoice_mode_delete'])->*/
+                get('delete/{id}', 'InvoiceModeController@delete')
+                    ->name('删除发票方式');
+                Route::/*middleware(['permission:invoice_mode_all'])->*/
+                get('all', 'InvoiceModeController@all')
+                    ->name('查询所有发票方式');
+                Route::/*middleware(['permission:invoice_mode_search'])->*/
+                get('search', 'InvoiceModeController@search')
+                    ->name('搜索放票方式');
+            });
+
+        // 发票税配置管理
+        Route::prefix('invoice_tax_config')
+            ->group(function () {
+                Route::/*middleware(['permission:invoice_tax_config_create'])->*/
+                post('create', 'InvoiceTaxConfigController@create')
+                    ->name('创建发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_update'])->*/
+                post('update', 'InvoiceTaxConfigController@update')
+                    ->name('更新发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_query'])->*/
+                get('query/{id}', 'InvoiceTaxConfigController@query')
+                    ->name('根据ID查询发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_delete'])->*/
+                get('delete/{id}', 'InvoiceTaxConfigController@delete')
+                    ->name('删除发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_all'])->*/
+                get('all', 'InvoiceTaxConfigController@all')
+                    ->name('查询所有发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_search'])->*/
+                get('search', 'InvoiceTaxConfigController@search')
+                    ->name('搜索发票税配置');
+            });
     });
