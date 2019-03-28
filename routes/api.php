@@ -64,4 +64,64 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 get('delete/{id}', 'ItemController@delete')
                     ->name('删除项目');
             });
+
+        // 物料分类管理
+        Route::prefix('material_category')
+            ->group(function () {
+                Route::/*middleware(['permission:material_category_create'])->*/
+                post('create', 'MaterialCategoryController@create')
+                    ->name('创建物料分类');
+                Route::/*middleware(['permission:material_category_update'])->*/
+                post('update', 'MaterialCategoryController@update')
+                    ->name('更新物料分类');
+                Route::/*middleware(['permission:material_category_query'])->*/
+                get('query/{id}', 'MaterialCategoryController@query')
+                    ->name('根据ID查询物料分类');
+                Route::/*middleware(['permission:material_category_delete'])->*/
+                get('delete/{id}', 'MaterialCategoryController@delete')
+                    ->name('删除物料分类');
+                Route::/*middleware(['permission:material_category_all'])->*/
+                get('all', 'MaterialCategoryController@all')
+                    ->name('查询所有物料分类');
+                Route::/*middleware(['permission:material_category_search'])->*/
+                get('search', 'MaterialCategoryController@search')
+                    ->name('物料分类搜索');
+                Route::/*middleware(['permission:material_category_move'])->*/
+                get('move/{newPid}/{id}', 'MaterialCategoryController@move')
+                    ->name('移动物料分类');
+                Route::/*middleware(['permission:material_category_query_child'])->*/
+                get('query_child/{level}/{pId}', 'MaterialCategoryController@queryChild')
+                    ->name('根据等级和上级分类ID查询子类');
+                Route::/*middleware(['permission:material_category_query_batch'])->*/
+                get('queryBatch/{idStr}', 'MaterialCategoryController@queryBatch')
+                    ->name('根据ID批量查询分类');
+            });
+
+        // 物料品牌管理
+        Route::prefix('material_brand')
+            ->group(function () {
+                Route::/*middleware(['permission:material_brand_create'])->*/
+                post('create', 'MaterialBrandController@create')
+                    ->name('创建物料品牌');
+                Route::/*middleware(['permission:material_brand_update'])->*/
+                post('update', 'MaterialBrandController@update')
+                    ->name('更新物料品牌');
+                Route::/*middleware(['permission:material_brand_query'])->*/
+                get('query/{id}', 'MaterialBrandController@query')
+                    ->name('根据ID查询物料品牌');
+                Route::/*middleware(['permission:material_brand_delete'])->*/
+                get('delete/{id}', 'MaterialBrandController@delete')
+                    ->name('删除物料品牌');
+                Route::/*middleware(['permission:material_brand_all'])->*/
+                get('all', 'MaterialBrandController@all')
+                    ->name('查询所有物料品牌');
+                Route::/*middleware(['permission:material_brand_search'])->*/
+                get('search', 'MaterialBrandController@search')
+                    ->name('物料品牌搜索');
+                Route::/*middleware(['permission:material_brand_query_batch'])->*/
+                get('queryBatch/{idStr}', 'MaterialBrandController@queryBatch')
+                    ->name('根据ID批量查询分类');
+            });
+
+
     });
