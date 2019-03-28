@@ -1,0 +1,20 @@
+{
+    "name": "hq_repair/base_data",
+    "description": "汽修平台基管理",
+    "authors": [
+        {
+            "name": "xuwenqiang",
+            "email": "xuwenqiang@heqi-inc.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "~5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Model\\DB\\Mysql\\": "src/Model/Mysql/",
+            "App\\Http\\Controllers\\": "src/Controller/"
+        }
+    }
+}
