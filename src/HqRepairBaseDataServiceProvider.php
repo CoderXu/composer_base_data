@@ -32,9 +32,12 @@ class HqRepairBaseDataServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group($this->loadRoutesFrom(__DIR__ . '/../routes/api.php'));
+        Route::group([
+            'prefix' => 'api',
+            'namespace' => $this->namespace,
+            'middleware' => 'api',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        });
     }
 }
