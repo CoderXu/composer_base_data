@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
 
 class HqRepairBaseDataServiceProvider extends ServiceProvider
 {
+    protected $namespace = 'App\Http\Controllers';
+
     /**
      * Bootstrap any application services.
      *
