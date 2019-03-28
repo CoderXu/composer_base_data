@@ -123,5 +123,72 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                     ->name('根据ID批量查询分类');
             });
 
+        // 计量单位管理
+        Route::prefix('measure_unit')
+            ->group(function () {
+                Route::/*middleware(['permission:measure_unit_create'])->*/
+                post('create', 'MeasureUnitController@create')
+                    ->name('创建计量单位');
+                Route::/*middleware(['permission:measure_unit_update'])->*/
+                post('update', 'MeasureUnitController@update')
+                    ->name('更新计量单位');
+                Route::/*middleware(['permission:measure_unit_query'])->*/
+                get('query/{id}', 'MeasureUnitController@query')
+                    ->name('根据ID查询计量单位');
+                Route::/*middleware(['permission:measure_unit_delete'])->*/
+                get('delete/{id}', 'MeasureUnitController@delete')
+                    ->name('删除计量单位');
+                Route::/*middleware(['permission:measure_unit_all'])->*/
+                get('all', 'MeasureUnitController@all')
+                    ->name('查询所有计量单位');
+                Route::/*middleware(['permission:measure_unit_search'])->*/
+                get('search', 'MeasureUnitController@search')
+                    ->name('计量单位搜索');
+            });
 
+        // 支付渠道管理
+        Route::prefix('payment_channel')
+            ->group(function () {
+                Route::/*middleware(['permission:payment_channel_create'])->*/
+                post('create', 'PaymentChannelController@create')
+                    ->name('创建支付渠道');
+                Route::/*middleware(['permission:payment_channel_update'])->*/
+                post('update', 'PaymentChannelController@update')
+                    ->name('更新支付渠道');
+                Route::/*middleware(['permission:payment_channel_delete'])->*/
+                get('delete/{id}', 'PaymentChannelController@delete')
+                    ->name('删除支付渠道');
+                Route::/*middleware(['permission:payment_channel_query'])->*/
+                get('query/{id}', 'PaymentChannelController@query')
+                    ->name('根据ID查询支付渠道');
+                Route::/*middleware(['permission:payment_channel_all'])->*/
+                get('all', 'PaymentChannelController@all')
+                    ->name('查询所有支付渠道');
+                Route::/*middleware(['permission:payment_channel_search'])->*/
+                get('search', 'PaymentChannelController@search')
+                    ->name('搜索支付渠道');
+            });
+
+        // 付款条款管理
+        Route::prefix('payment_term')
+            ->group(function () {
+                Route::/*middleware(['permission:payment_term_create'])->*/
+                post('create', 'PaymentTermController@create')
+                    ->name('创建付款条款');
+                Route::/*middleware(['permission:payment_term_update'])->*/
+                post('update', 'PaymentTermController@update')
+                    ->name('更新付款条款');
+                Route::/*middleware(['permission:payment_term_query'])->*/
+                get('query/{id}', 'PaymentTermController@query')
+                    ->name('根据ID查询付款条款');
+                Route::/*middleware(['permission:payment_term_delete'])->*/
+                get('delete/{id}', 'PaymentTermController@delete')
+                    ->name('删除付款条款');
+                Route::/*middleware(['permission:payment_term_all'])->*/
+                get('all', 'PaymentTermController@all')
+                    ->name('查询所有付款条款');
+                Route::/*middleware(['permission:payment_term_search'])->*/
+                get('search', 'PaymentTermController@search')
+                    ->name('付款条款搜索');
+            });
     });
