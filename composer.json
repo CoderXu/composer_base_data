@@ -1,6 +1,6 @@
 {
     "name": "hq_repair/base_data",
-    "description": "汽修平台基管理",
+    "description": "汽修平台基础数据管理扩展",
     "authors": [
         {
             "name": "xuwenqiang",
@@ -16,5 +16,6 @@
             "App\\Model\\DB\\Mysql\\": "src/Model/Mysql/",
             "App\\Http\\Controllers\\": "src/Controller/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
