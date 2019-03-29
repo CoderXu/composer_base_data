@@ -237,4 +237,50 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 get('search', 'InvoiceTaxConfigController@search')
                     ->name('搜索发票税配置');
             });
+
+        // 业务分类
+        Route::prefix('business_category')
+            ->group(function () {
+                Route::/*middleware(['permission:business_category_create'])->*/
+                post('create', 'BusinessCategoryController@create')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:business_category_update'])->*/
+                post('update', 'BusinessCategoryController@update')
+                    ->name('修改业务分类');
+                Route::/*middleware(['permission:business_category_query'])->*/
+                get('query/{id}', 'BusinessCategoryController@query')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:business_category_delete'])->*/
+                get('delete/{id}', 'BusinessCategoryController@delete')
+                    ->name('删除业务分类');
+                Route::/*middleware(['permission:business_category_all'])->*/
+                get('all', 'BusinessCategoryController@all')
+                    ->name('查询所有业务分类');
+                Route::/*middleware(['permission:business_category_search'])->*/
+                get('search', 'BusinessCategoryController@search')
+                    ->name('搜索业务分类');
+            });
+
+        // 项目性质
+        Route::prefix('item_property')
+            ->group(function () {
+                Route::/*middleware(['permission:item_property_create'])->*/
+                post('create', 'ItemPropertyController@create')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:item_property_update'])->*/
+                post('update', 'ItemPropertyController@update')
+                    ->name('修改业务分类');
+                Route::/*middleware(['permission:item_property_query'])->*/
+                get('query/{id}', 'ItemPropertyController@query')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:item_property_delete'])->*/
+                get('delete/{id}', 'ItemPropertyController@delete')
+                    ->name('删除业务分类');
+                Route::/*middleware(['permission:item_property_all'])->*/
+                get('all', 'ItemPropertyController@all')
+                    ->name('查询所有业务分类');
+                Route::/*middleware(['permission:item_property_search'])->*/
+                get('search', 'ItemPropertyController@search')
+                    ->name('搜索业务分类');
+            });
     });

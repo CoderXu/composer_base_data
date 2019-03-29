@@ -10,6 +10,7 @@ class MaterialBrandController extends Controller
 {
     protected $mActionTitle = '物料品牌';
     protected $mIsTransactionPut = true;
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(MaterialBrand $materialBrand)
     {

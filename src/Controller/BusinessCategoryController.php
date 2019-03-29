@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\DB\Mysql\MeasureUnit;
+use App\Model\DB\Mysql\BusinessCategory;
 
-class MeasureUnitController extends Controller
+class BusinessCategoryController extends Controller
 {
-    protected $mActionTitle = '计量单位';
+    protected $mActionTitle = '业务分类';
     protected $mIsAutoSetNameFirstChar = true;
 
-    public function __construct(MeasureUnit $measureUnit)
+    public function __construct(BusinessCategory $businessCategory)
     {
-        $this->mModel = $measureUnit;
+        $this->mModel = $businessCategory;
         parent::__construct();
     }
 
-    protected function initPutValidation()
+    public function initPutValidation()
     {
         $this->mValidation = [
             'name' => [
@@ -23,21 +23,27 @@ class MeasureUnitController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
-        $this->mRequestParamKeys = ['name'];
+        $this->mRequestParamKeys = [
+            'name',
+            'remark'
+        ];
+
         $this->mUniqueEloquentFunc = function ($params) {
-            return $this->mUniqueEloquent->where('name', $params['name']);
+            return $this->mUniqueEloquent
+                ->where('name', $params['name']);
         };
+
         return parent::initPutValidation();
     }
 
-    /**
-     * 搜索
-     *
-     *
-     */
     public function search()
     {
         $this->mValidation = [

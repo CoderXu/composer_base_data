@@ -11,6 +11,7 @@ class MaterialCategoryController extends Controller
     protected $mActionTitle = '物料分类';
     protected $mIsInfiniteCategory = true;
     protected $mIsInfiniteCategoryLevel = true;
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(MaterialCategory $materialCategory)
     {
