@@ -283,4 +283,56 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 get('search', 'ItemPropertyController@search')
                     ->name('搜索业务分类');
             });
+
+        // 部门
+        Route::prefix('department')
+            ->group(function () {
+                Route::/*middleware(['permission:department_create'])->*/
+                post('create', 'DepartmentController@create')
+                    ->name('创建部门');
+                Route::/*middleware(['permission:department_update'])->*/
+                post('update', 'DepartmentController@update')
+                    ->name('修改部门');
+                Route::/*middleware(['permission:department_query'])->*/
+                get('query/{id}', 'DepartmentController@query')
+                    ->name('创建部门');
+                Route::/*middleware(['permission:department_delete'])->*/
+                get('delete/{id}', 'DepartmentController@delete')
+                    ->name('删除部门');
+                Route::/*middleware(['permission:department_all'])->*/
+                get('all', 'DepartmentController@all')
+                    ->name('查询所有部门');
+                Route::/*middleware(['permission:department_search'])->*/
+                get('search', 'DepartmentController@search')
+                    ->name('搜索部门');
+                Route::/*middleware(['permission:department_move'])->*/
+                get('move/{newPid}/{id}', 'DepartmentController@move')
+                    ->name('移动部门');
+            });
+
+        // 保险类型
+        Route::prefix('insurance_category')
+            ->group(function () {
+                Route::/*middleware(['permission:insurance_category_create'])->*/
+                post('create', 'InsuranceCategoryController@create')
+                    ->name('创建保险分类');
+                Route::/*middleware(['permission:insurance_category_update'])->*/
+                post('update', 'InsuranceCategoryController@update')
+                    ->name('修改保险分类');
+                Route::/*middleware(['permission:insurance_category_query'])->*/
+                get('query/{id}', 'InsuranceCategoryController@query')
+                    ->name('创建保险分类');
+                Route::/*middleware(['permission:insurance_category_delete'])->*/
+                get('delete/{id}', 'InsuranceCategoryController@delete')
+                    ->name('删除保险分类');
+                Route::/*middleware(['permission:insurance_category_all'])->*/
+                get('all', 'InsuranceCategoryController@all')
+                    ->name('查询所有保险分类');
+                Route::/*middleware(['permission:insurance_category_search'])->*/
+                get('search', 'InsuranceCategoryController@search')
+                    ->name('搜索保险分类');
+                Route::/*middleware(['permission:insurance_category_move'])->*/
+                get('move/{newPid}/{id}', 'InsuranceCategoryController@move')
+                    ->name('移动保险分类');
+            });
     });
