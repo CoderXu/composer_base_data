@@ -335,4 +335,211 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 get('move/{newPid}/{id}', 'InsuranceCategoryController@move')
                     ->name('移动保险分类');
             });
+
+        // 欠款类型
+        Route::prefix('debt_category')
+            ->group(function () {
+                Route::/*middleware(['permission:debt_category_create'])->*/
+                post('create', 'DebtCategoryController@create')
+                    ->name('创建欠款分类');
+                Route::/*middleware(['permission:debt_category_update'])->*/
+                post('update', 'DebtCategoryController@update')
+                    ->name('修改欠款分类');
+                Route::/*middleware(['permission:debt_category_query'])->*/
+                get('query/{id}', 'DebtCategoryController@query')
+                    ->name('创建欠款分类');
+                Route::/*middleware(['permission:debt_category_delete'])->*/
+                get('delete/{id}', 'DebtCategoryController@delete')
+                    ->name('删除欠款分类');
+                Route::/*middleware(['permission:debt_category_all'])->*/
+                get('all', 'DebtCategoryController@all')
+                    ->name('查询所有欠款分类');
+                Route::/*middleware(['permission:debt_category_search'])->*/
+                get('search', 'DebtCategoryController@search')
+                    ->name('搜索欠款分类');
+            });
+
+        // 工单类型
+        Route::prefix('work_order_category')
+            ->group(function () {
+                Route::/*middleware(['permission:work_order_category_create'])->*/
+                post('create', 'WorkOrderCategoryController@create')
+                    ->name('创建工单分类');
+                Route::/*middleware(['permission:work_order_category_update'])->*/
+                post('update', 'WorkOrderCategoryController@update')
+                    ->name('修改工单分类');
+                Route::/*middleware(['permission:work_order_category_query'])->*/
+                get('query/{id}', 'WorkOrderCategoryController@query')
+                    ->name('创建工单分类');
+                Route::/*middleware(['permission:work_order_category_delete'])->*/
+                get('delete/{id}', 'WorkOrderCategoryController@delete')
+                    ->name('删除工单分类');
+                Route::/*middleware(['permission:work_order_category_all'])->*/
+                get('all', 'WorkOrderCategoryController@all')
+                    ->name('查询所有工单分类');
+                Route::/*middleware(['permission:work_order_category_search'])->*/
+                get('search', 'WorkOrderCategoryController@search')
+                    ->name('搜索工单分类');
+            });
+
+        // 出库类型
+        Route::prefix('out_picking_category')
+            ->group(function () {
+                Route::/*middleware(['permission:out_picking_category_create'])->*/
+                post('create', 'OutPickingCategoryController@create')
+                    ->name('创建出库分类');
+                Route::/*middleware(['permission:out_picking_category_update'])->*/
+                post('update', 'OutPickingCategoryController@update')
+                    ->name('修改出库分类');
+                Route::/*middleware(['permission:out_picking_category_query'])->*/
+                get('query/{id}', 'OutPickingCategoryController@query')
+                    ->name('创建出库分类');
+                Route::/*middleware(['permission:out_picking_category_delete'])->*/
+                get('delete/{id}', 'OutPickingCategoryController@delete')
+                    ->name('删除出库分类');
+                Route::/*middleware(['permission:out_picking_category_all'])->*/
+                get('all', 'OutPickingCategoryController@all')
+                    ->name('查询所有出库分类');
+                Route::/*middleware(['permission:out_picking_category_search'])->*/
+                get('search', 'OutPickingCategoryController@search')
+                    ->name('搜索出库分类');
+            });
+
+        // 退货原因
+        Route::prefix('return_reason')
+            ->group(function () {
+                Route::/*middleware(['permission:return_reason_create'])->*/
+                post('create', 'ReturnReasonController@create')
+                    ->name('创建退货原因');
+                Route::/*middleware(['permission:return_reason_update'])->*/
+                post('update', 'ReturnReasonController@update')
+                    ->name('修改退货原因');
+                Route::/*middleware(['permission:return_reason_query'])->*/
+                get('query/{id}', 'ReturnReasonController@query')
+                    ->name('创建退货原因');
+                Route::/*middleware(['permission:return_reason_delete'])->*/
+                get('delete/{id}', 'ReturnReasonController@delete')
+                    ->name('删除退货原因');
+                Route::/*middleware(['permission:return_reason_all'])->*/
+                get('all', 'ReturnReasonController@all')
+                    ->name('查询所有退货原因');
+                Route::/*middleware(['permission:return_reason_search'])->*/
+                get('search', 'ReturnReasonController@search')
+                    ->name('搜索退货原因');
+            });
+
+        // 卡类型
+        Route::prefix('card_category')
+            ->group(function () {
+                Route::/*middleware(['permission:card_category_create'])->*/
+                post('create', 'CardCategoryController@create')
+                    ->name('创建卡分类');
+                Route::/*middleware(['permission:card_category_update'])->*/
+                post('update', 'CardCategoryController@update')
+                    ->name('修改卡分类');
+                Route::/*middleware(['permission:card_category_query'])->*/
+                get('query/{id}', 'CardCategoryController@query')
+                    ->name('创建卡分类');
+                Route::/*middleware(['permission:card_category_delete'])->*/
+                get('delete/{id}', 'CardCategoryController@delete')
+                    ->name('删除卡分类');
+                Route::/*middleware(['permission:card_category_all'])->*/
+                get('all', 'CardCategoryController@all')
+                    ->name('查询所有卡分类');
+                Route::/*middleware(['permission:card_category_search'])->*/
+                get('search', 'CardCategoryController@search')
+                    ->name('搜索卡分类');
+            });
+
+        // 身份类型
+        Route::prefix('id_category')
+            ->group(function () {
+                Route::/*middleware(['permission:id_category_create'])->*/
+                post('create', 'IdCategoryController@create')
+                    ->name('创建证件类型');
+                Route::/*middleware(['permission:id_category_update'])->*/
+                post('update', 'IdCategoryController@update')
+                    ->name('修改证件类型');
+                Route::/*middleware(['permission:id_category_query'])->*/
+                get('query/{id}', 'IdCategoryController@query')
+                    ->name('创建证件类型');
+                Route::/*middleware(['permission:id_category_delete'])->*/
+                get('delete/{id}', 'IdCategoryController@delete')
+                    ->name('删除证件类型');
+                Route::/*middleware(['permission:id_category_all'])->*/
+                get('all', 'IdCategoryController@all')
+                    ->name('查询所有证件类型');
+                Route::/*middleware(['permission:id_category_search'])->*/
+                get('search', 'IdCategoryController@search')
+                    ->name('搜索证件类型');
+            });
+
+        // 门店等级
+        Route::prefix('store_level')
+            ->group(function () {
+                Route::/*middleware(['permission:store_level_create'])->*/
+                post('create', 'StoreLevelController@create')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:store_level_update'])->*/
+                post('update', 'StoreLevelController@update')
+                    ->name('修改业务分类');
+                Route::/*middleware(['permission:store_level_query'])->*/
+                get('query/{id}', 'StoreLevelController@query')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:store_level_delete'])->*/
+                get('delete/{id}', 'StoreLevelController@delete')
+                    ->name('删除业务分类');
+                Route::/*middleware(['permission:store_level_all'])->*/
+                get('all', 'StoreLevelController@all')
+                    ->name('查询所有业务分类');
+                Route::/*middleware(['permission:store_level_search'])->*/
+                get('search', 'StoreLevelController@search')
+                    ->name('搜索业务分类');
+            });
+
+        // 保险公司
+        Route::prefix('insurance_company')
+            ->group(function () {
+                Route::/*middleware(['permission:insurance_company_create'])->*/
+                post('create', 'InsuranceCompanyController@create')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:insurance_company_update'])->*/
+                post('update', 'InsuranceCompanyController@update')
+                    ->name('修改业务分类');
+                Route::/*middleware(['permission:insurance_company_query'])->*/
+                get('query/{id}', 'InsuranceCompanyController@query')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:insurance_company_delete'])->*/
+                get('delete/{id}', 'InsuranceCompanyController@delete')
+                    ->name('删除业务分类');
+                Route::/*middleware(['permission:insurance_company_all'])->*/
+                get('all', 'InsuranceCompanyController@all')
+                    ->name('查询所有业务分类');
+                Route::/*middleware(['permission:insurance_company_search'])->*/
+                get('search', 'InsuranceCompanyController@search')
+                    ->name('搜索业务分类');
+            });
+
+        // 包装方式
+        Route::prefix('packaging_category')
+            ->group(function () {
+                Route::/*middleware(['permission:packaging_category_create'])->*/
+                post('create', 'PackagingCategoryController@create')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:packaging_category_update'])->*/
+                post('update', 'PackagingCategoryController@update')
+                    ->name('修改业务分类');
+                Route::/*middleware(['permission:packaging_category_query'])->*/
+                get('query/{id}', 'PackagingCategoryController@query')
+                    ->name('创建业务分类');
+                Route::/*middleware(['permission:packaging_category_delete'])->*/
+                get('delete/{id}', 'PackagingCategoryController@delete')
+                    ->name('删除业务分类');
+                Route::/*middleware(['permission:packaging_category_all'])->*/
+                get('all', 'PackagingCategoryController@all')
+                    ->name('查询所有业务分类');
+                Route::/*middleware(['permission:packaging_category_search'])->*/
+                get('search', 'PackagingCategoryController@search')
+                    ->name('搜索业务分类');
+            });
     });
