@@ -12,6 +12,7 @@ class MaterialCategoryController extends Controller
     protected $mIsInfiniteCategory = true;
     protected $mIsInfiniteCategoryLevel = true;
     protected $mIsAutoSetNameFirstChar = true;
+    protected $mInfiniteCategoryParentName = 'p_id';
 
     public function __construct(MaterialCategory $materialCategory)
     {
@@ -22,12 +23,6 @@ class MaterialCategoryController extends Controller
     public function initPutValidation()
     {
         $this->mValidation = [
-            'p_id' => [
-                'required',
-                'integer',
-                'min:0',
-                'max:4294967295',
-            ],
             'name' => [
                 'string',
                 'required',
@@ -48,23 +43,8 @@ class MaterialCategoryController extends Controller
         ];
 
         $this->mRequestParamKeys = ['name', 'product_type', 'hq_pn_category'];
-        if ($this->mIsUpdateAction) {
-            unset($this->mValidation[$this->mInfiniteCategoryParentName]);
-        } else {
-            $this->mRequestParamKeys[] = 'p_id';
-            $this->mPutActionParamKeys = $this->mRequestParamKeys;
-            $this->mPutActionParamKeys[] = 'pid_path';
-            $this->mPutActionParamKeys[] = 'level';
-        }
         $this->mUniqueEloquentFunc = function ($params) {
-            if ($this->mIsUpdateAction) {
-                $model = $this->mModel->find($params[$this->mModelPK]);
-                if (!$model) $this->throwMyException($this->mActionTitle . '不存在');
-                $params[$this->mInfiniteCategoryLevelName] = $model[$this->mInfiniteCategoryLevelName];
-            }
-
             return $this->mUniqueEloquent
-                ->where($this->mInfiniteCategoryLevelName, $params[$this->mInfiniteCategoryLevelName])
                 ->where('name', $params['name'])
                 ->orWhere(function ($query) use ($params) {
                     if (isset($params['hq_pn_category'])) {
