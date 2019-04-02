@@ -78,7 +78,7 @@ class CardCategoryController extends Controller
                 $this->mModel = $this->mModel
                     ->where($key
                         , 'like'
-                        , '%' . $requestParams['name'] . '%');
+                        , '%' . $value . '%');
             } else {
                 $this->mModel = $this->mModel
                     ->where($key, $value);
