@@ -9,6 +9,7 @@ use App\Model\DB\Mysql\InvoiceTaxConfig;
 class InvoiceTaxConfigController extends Controller
 {
     protected $mActionTitle = '发票税配置';
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(InvoiceTaxConfig $invoiceTaxConfig)
     {

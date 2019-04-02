@@ -13,6 +13,7 @@ use App\Model\DB\Mysql\ItemCategory;
 class ItemController extends Controller
 {
     protected $mActionTitle = '项目';
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(Item $item)
     {

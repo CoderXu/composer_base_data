@@ -7,6 +7,7 @@ use App\Model\DB\Mysql\InvoiceMode;
 class InvoiceModeController extends Controller
 {
     protected $mActionTitle = '发票方式';
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(InvoiceMode $invoiceMode)
     {

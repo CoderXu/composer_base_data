@@ -10,6 +10,7 @@ class ItemCategoryController extends Controller
     protected $mIsInfiniteCategory = true;
     protected $mInfiniteCategoryParentName = 'pid';
     protected $mIsInfiniteCategoryLevel = true;
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(ItemCategory $itemCategory)
     {

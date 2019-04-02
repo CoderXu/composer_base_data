@@ -8,6 +8,7 @@ use App\Model\DB\Mysql\PaymentChannel;
 class PaymentChannelController extends Controller
 {
     protected $mActionTitle = '支付渠道';
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(PaymentChannel $paymentChannel)
     {

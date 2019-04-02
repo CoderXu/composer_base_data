@@ -7,6 +7,7 @@ use App\Model\DB\Mysql\PaymentTerm;
 class PaymentTermController extends Controller
 {
     protected $mActionTitle = '付款条款';
+    protected $mIsAutoSetNameFirstChar = true;
 
     public function __construct(PaymentTerm $paymentTerm)
     {
