@@ -24,6 +24,11 @@ class PaymentTermController extends Controller
                 'min:1',
                 'max:191'
             ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
             'remark' => [
                 "nullable",
                 'string',
@@ -31,7 +36,11 @@ class PaymentTermController extends Controller
                 'max:191'
             ]
         ];
-        $this->mRequestParamKeys = ['name', 'remark'];
+        $this->mRequestParamKeys = [
+            'name'
+            , 'description'
+            , 'remark'
+        ];
         $this->mUniqueEloquentFunc = function ($params) {
             return $this->mUniqueEloquent->where('name', $params['name']);
         };

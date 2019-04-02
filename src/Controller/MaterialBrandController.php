@@ -32,10 +32,25 @@ class MaterialBrandController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
-        $this->mRequestParamKeys = ['name', 'brand_pn'];
+        $this->mRequestParamKeys = [
+            'name'
+            , 'brand_pn'
+            , 'description'
+            , 'remark'
+        ];
 
         $this->mUniqueEloquentFunc = function ($params) {
             $eloquent = $this->mUniqueEloquent->where('name', $params['name']);
@@ -56,7 +71,7 @@ class MaterialBrandController extends Controller
             }
         };
         $this->initCallbacks();
-        $params =  parent::initPutValidation();
+        $params = parent::initPutValidation();
         return $params;
     }
 

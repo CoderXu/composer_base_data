@@ -23,10 +23,24 @@ class MeasureUnitController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
-        $this->mRequestParamKeys = ['name'];
+        $this->mRequestParamKeys = [
+            'name'
+            , 'description'
+            , 'remark'
+        ];
         $this->mUniqueEloquentFunc = function ($params) {
             return $this->mUniqueEloquent->where('name', $params['name']);
         };

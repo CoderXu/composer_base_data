@@ -65,6 +65,16 @@ class ItemController extends Controller
                 'numeric',
                 'min:0',
                 'max:1000000000',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
@@ -76,6 +86,8 @@ class ItemController extends Controller
             , 'assess_man_hour'
             , 'charge_man_hour'
             , 'man_hour'
+            , 'description'
+            , 'remark'
         ];
 
         $this->mPutActionParamKeys = $this->mRequestParamKeys;

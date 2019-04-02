@@ -33,13 +33,25 @@ class InvoiceModeController extends Controller
             'is_tax' => [
                 'required',
                 'boolean',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
         $this->mRequestParamKeys = [
             'name',
             'code',
-            'is_tax'
+            'is_tax',
+            'description',
+            'remark'
         ];
         $this->mUniqueEloquentFunc = function ($params) {
             return $this->mUniqueEloquent->where('name', $params['name']);

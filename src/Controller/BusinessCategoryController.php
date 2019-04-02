@@ -24,6 +24,11 @@ class BusinessCategoryController extends Controller
                 'min:1',
                 'max:191'
             ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
             'remark' => [
                 'nullable',
                 'string',
@@ -33,6 +38,7 @@ class BusinessCategoryController extends Controller
 
         $this->mRequestParamKeys = [
             'name',
+            'description',
             'remark'
         ];
 

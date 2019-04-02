@@ -87,12 +87,24 @@ class ItemCategoryController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
         $requestParams = $this->mRequest->only([
             'pid'
             , 'name'
             , 'name_first_char'
+            , 'description'
+            , 'remark'
         ]);
         if (count($requestParams) > 0) {
             $this->mValidator($requestParams);

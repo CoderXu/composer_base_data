@@ -39,10 +39,26 @@ class MaterialCategoryController extends Controller
                 'string',
                 'min:1',
                 'max:191',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:191'
+            ],
+            'remark' => [
+                'nullable',
+                'string',
+                'max:191'
             ]
         ];
 
-        $this->mRequestParamKeys = ['name', 'product_type', 'hq_pn_category'];
+        $this->mRequestParamKeys = [
+            'name'
+            , 'product_type'
+            , 'hq_pn_category'
+            , 'description'
+            , 'remark'
+        ];
         $this->mUniqueEloquentFunc = function ($params) {
             return $this->mUniqueEloquent
                 ->where('name', $params['name'])
