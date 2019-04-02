@@ -43,26 +43,33 @@ class PaymentChannelController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'name_first_char' => [
+                'nullable',
+                'string',
+                'min:1',
+                'max:191'
             ]
         ];
-
-        $params = $this->mRequest->only([
+        $requestParams = $this->mRequest->only([
             'name'
+            , 'name_first_char'
         ]);
-        if (count($params) > 0)
-            $this->mValidator($params);
-        $model = $this->mModel;
-        foreach ($params as $key => $value) {
-            if (in_array($key, ['name'])) {
-                $model = $model->where(
-                    $key
-                    , 'like'
-                    , '%' . $value . '%');
+        if (count($requestParams) > 0) {
+            $this->mValidator($requestParams);
+        }
+        foreach ($requestParams as $key => $value) {
+            if (in_array($key, ['name', 'name_first_char'])) {
+                $this->mModel = $this->mModel
+                    ->where($key
+                        , 'like'
+                        , '%' . $requestParams['name'] . '%');
             } else {
-                $model = $model->where($key, $value);
+                $this->mModel = $this->mModel
+                    ->where($key, $value);
             }
         }
-        return $model
+        return $this->mModel
             ->orderByDesc('updated_at')
             ->paginate();
     }

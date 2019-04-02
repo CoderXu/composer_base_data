@@ -116,6 +116,12 @@ class InvoiceTaxConfigController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'name_first_char' => [
+                'nullable',
+                'string',
+                'min:1',
+                'max:191'
             ]
         ];
 
@@ -123,6 +129,7 @@ class InvoiceTaxConfigController extends Controller
             'invoice_mode_id'
             , 'tax_use_type'
             , 'name'
+            , 'name_first_char'
         ]);
 
         if (count($params) > 0)
@@ -155,6 +162,9 @@ class InvoiceTaxConfigController extends Controller
 
         if (isset($params['name']))
             $builder = $builder->where('name', 'like', '%' . $params['name'] . '%');
+
+        if (isset($params['name_first_char']))
+            $builder = $builder->where('name_first_char', 'like', '%' . $params['name_first_char'] . '%');
 
         return $builder->get();
     }

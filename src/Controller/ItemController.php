@@ -142,11 +142,18 @@ class ItemController extends Controller
                 'string',
                 'min:1',
                 'max:191'
+            ],
+            'name_first_char' => [
+                'nullable',
+                'string',
+                'min:1',
+                'max:191'
             ]
         ];
         $requestParams = $this->mRequest->only([
             'item_category_id'
             , 'name'
+            , 'name_first_char'
         ]);
         if (count($requestParams) > 0) {
             $this->mValidator($requestParams);
@@ -154,9 +161,9 @@ class ItemController extends Controller
         if (!empty($this->getDefaultSearchWith()))
             $this->mModel = $this->mModel->with($this->getDefaultSearchWith());
         foreach ($requestParams as $key => $value) {
-            if (in_array($key, ['name'])) {
+            if (in_array($key, ['name','name_first_char'])) {
                 $this->mModel = $this->mModel
-                    ->where('name'
+                    ->where($key
                         , 'like'
                         , '%' . $requestParams['name'] . '%');
             } else {
