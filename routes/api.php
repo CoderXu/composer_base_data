@@ -259,6 +259,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:business_category_search'])->*/
                 get('search', 'BusinessCategoryController@search')
                     ->name('搜索业务分类');
+                Route::/*middleware(['permission:business_category_copy_all'])->*/
+                get('copyAll', 'BusinessCategoryController@copyBaseDataAll')
+                    ->name('复制所有基础数据');
             });
 
         // 项目性质
