@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Extend;
 
 use Illuminate\Http\Request;
 use App\Utils\GRpc\JwtAuthClientUtil;
+use Proto\UserData;
 
 trait CopyNormalBaseData
 {
@@ -22,6 +23,7 @@ trait CopyNormalBaseData
      */
     protected function isAllowCopyBaseData()
     {
+        //
         $userData = new UserData();
         $userData->setSysId('0');
         $userData->setTenantId('1');
