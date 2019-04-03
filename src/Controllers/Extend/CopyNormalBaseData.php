@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Extend;
 
 use Illuminate\Http\Request;
+use App\Utils\GRpc\JwtAuthClientUtil;
 
 trait CopyNormalBaseData
 {
@@ -21,8 +22,14 @@ trait CopyNormalBaseData
      */
     protected function isAllowCopyBaseData()
     {
+        $userData = new UserData();
+        $userData->setSysId('0');
+        $userData->setTenantId('1');
+        $userData->setStoreId('1');
+        $userData->setUserId('1');
+        JwtAuthClientUtil::getInstance()->setPayload($userData);
         if ($this->getTenantId() == 0)
-            $this->throwMyException($this->mActionTitle . '不存在');
+            $this->throwMyException("不允许复制");
     }
 
     /**
