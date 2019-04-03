@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Model\DB\Mysql\BusinessCategory;
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 
 class BusinessCategoryController extends Controller
 {
+    use CopyNormalBaseData;
     protected $mActionTitle = '业务分类';
     protected $mIsAutoSetNameFirstChar = true;
 
