@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Extend;
 
 use Illuminate\Http\Request;
 
-class CopyNormalBaseData
+trait CopyNormalBaseData
 {
     protected $mIsTransactionCopyBaseData = false;
 
