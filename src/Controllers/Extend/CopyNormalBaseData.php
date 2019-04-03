@@ -39,6 +39,7 @@ trait CopyNormalBaseData
      *
      * @param $eloquent
      * @return array
+     * @throws \Throwable
      */
     public function copyBaseDataAll($eloquent = null)
     {
@@ -47,7 +48,7 @@ trait CopyNormalBaseData
             $eloquent = $this->mModel;
         // 查询标准数据
         $normalBaseData = $eloquent
-            ->withoutGlobalScopes()
+            ->withoutGlobalScope('saas')
             ->where('tenant_id', 0)
             ->where('store_id', 0)
             ->get()
@@ -61,10 +62,13 @@ trait CopyNormalBaseData
             foreach ($normalBaseData as $key => $data) {
                 try {
                     $this->doCopyBaseData($data);
-                    $results['success'] = $data;
+                    $results['success'][] = $data;
                 } catch (\Exception $e) {
+                    if ($this->mIsTransactionCopyBaseData){
+                        $this->throwMyException($e->getMessage());
+                    }
+                    $data['err_msg'] = $e->getMessage();
                     $results['failure'][] = $data;
-                    $this->throwMyException($e->getMessage());
                 }
             }
             return $results;
@@ -84,6 +88,7 @@ trait CopyNormalBaseData
      */
     public function doCopyBaseData($data)
     {
+//        dd($data);
         // 初始化request
         $request = new Request();
         $request->offsetSet('normal_id', $data['id']);
@@ -92,6 +97,7 @@ trait CopyNormalBaseData
                 $key
                 , [
                     'id'
+                    , 'normal_id'
                     , 'name_first_char'
                     , 'created_at'
                     , 'updated_at'
@@ -100,7 +106,7 @@ trait CopyNormalBaseData
             )) continue;
             $request->offsetSet($key, $value);
         }
-        $this->setReqeust($request);
+        $this->setRequest($request);
         return $this->create();
     }
 }

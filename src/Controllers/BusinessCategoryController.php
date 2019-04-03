@@ -24,7 +24,7 @@ class BusinessCategoryController extends Controller
                 'integer',
                 'min:1',
                 'max:4294967295',
-                $this->saasNormalDataRuleExists()
+                $this->saasNormalDataRuleExists(null, 'id')
             ],
             'name' => [
                 'required',
