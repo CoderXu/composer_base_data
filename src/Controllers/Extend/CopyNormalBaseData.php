@@ -23,13 +23,14 @@ trait CopyNormalBaseData
      */
     protected function isAllowCopyBaseData()
     {
-        //
+        // TODO --- start
         $userData = new UserData();
         $userData->setSysId('0');
         $userData->setTenantId('1');
         $userData->setStoreId('1');
         $userData->setUserId('1');
         JwtAuthClientUtil::getInstance()->setPayload($userData);
+        // TODO --- end
         if ($this->getTenantId() == 0)
             $this->throwMyException("不允许复制");
     }
