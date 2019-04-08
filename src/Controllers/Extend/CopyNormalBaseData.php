@@ -23,16 +23,20 @@ trait CopyNormalBaseData
      */
     protected function isAllowCopyBaseData()
     {
-        // TODO --- start
+        $this->initTestCopyMode();
+        if ($this->getTenantId() == 0)
+            $this->throwMyException("不允许复制");
+    }
+
+    private function initTestCopyMode()
+    {
+        if (config('base_data.test_copy_mode')) return;
         $userData = new UserData();
         $userData->setSysId('0');
         $userData->setTenantId('1');
         $userData->setStoreId('1');
         $userData->setUserId('1');
         JwtAuthClientUtil::getInstance()->setPayload($userData);
-        // TODO --- end
-        if ($this->getTenantId() == 0)
-            $this->throwMyException("不允许复制");
     }
 
     /**
@@ -65,7 +69,7 @@ trait CopyNormalBaseData
                     $this->doCopyBaseData($data);
                     $results['success'][] = $data;
                 } catch (\Exception $e) {
-                    if ($this->mIsTransactionCopyBaseData){
+                    if ($this->mIsTransactionCopyBaseData) {
                         $this->throwMyException($e->getMessage());
                     }
                     $data['err_msg'] = $e->getMessage();
