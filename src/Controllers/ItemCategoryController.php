@@ -21,12 +21,6 @@ class ItemCategoryController extends Controller
     public function initPutValidation()
     {
         $this->mValidation = [
-            'pid' => [
-                'required',
-                'integer',
-                'min:0',
-                'max:4294967295'
-            ],
             'name' => [
                 'required',
                 'string',
