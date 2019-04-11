@@ -30,7 +30,7 @@ trait CopyNormalBaseData
 
     private function initTestCopyMode()
     {
-        if (config('base_data.test_copy_mode')) return;
+        if (!config('base_data.test_copy_mode')) return;
         $userData = new UserData();
         $userData->setSysId('0');
         $userData->setTenantId('1');
@@ -48,6 +48,7 @@ trait CopyNormalBaseData
      */
     public function copyBaseDataAll($eloquent = null)
     {
+        set_time_limit(600);
         $this->isAllowCopyBaseData();
         if ($eloquent == null)
             $eloquent = $this->mModel;

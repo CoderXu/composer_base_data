@@ -21,6 +21,12 @@ class MeasureUnitController extends Controller
     protected function initPutValidation()
     {
         $this->mValidation = [
+            'normal_id' => [
+                'integer',
+                'min:1',
+                'max:4294967295',
+                $this->saasNormalDataRuleExists(null, 'id')
+            ],
             'name' => [
                 'required',
                 'string',

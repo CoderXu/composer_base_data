@@ -55,6 +55,12 @@ class ReturnReasonController extends Controller
     public function search()
     {
         $this->mValidation = [
+            'normal_id' => [
+                'integer',
+                'min:1',
+                'max:4294967295',
+                $this->saasNormalDataRuleExists(null, 'id')
+            ],
             'name' => [
                 'nullable',
                 'string',

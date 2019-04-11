@@ -38,6 +38,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:item_category_move'])->*/
                 get('move/{newPid}/{id}', 'ItemCategoryController@move')
                     ->name('移动项目分类');
+                Route::/*middleware(['permission:item_category_copy_all'])->*/
+                get('copyAll', 'ItemCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准项目分类');
             });
         //  维修项目管理
         Route::prefix('item')
@@ -63,6 +66,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:item_delete'])->*/
                 get('delete/{id}', 'ItemController@delete')
                     ->name('删除项目');
+                Route::/*middleware(['permission:item_copy_all'])->*/
+                get('copyAll', 'ItemController@copyBaseDataAll')
+                    ->name('复制所有标准项目');
             });
 
         // 物料分类管理
@@ -95,6 +101,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:material_category_query_batch'])->*/
                 get('queryBatch/{idStr}', 'MaterialCategoryController@queryBatch')
                     ->name('根据ID批量查询分类');
+                Route::/*middleware(['permission:material_category_copy_all'])->*/
+                get('copyAll', 'MaterialCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准物料分类');
             });
 
         // 物料品牌管理
@@ -121,6 +130,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:material_brand_query_batch'])->*/
                 get('queryBatch/{idStr}', 'MaterialBrandController@queryBatch')
                     ->name('根据ID批量查询分类');
+                Route::/*middleware(['permission:material_brand_copy_all'])->*/
+                get('copyAll', 'MaterialBrandController@copyBaseDataAll')
+                    ->name('复制所有标准物料品牌');
             });
 
         // 计量单位管理
@@ -144,6 +156,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:measure_unit_search'])->*/
                 get('search', 'MeasureUnitController@search')
                     ->name('计量单位搜索');
+                Route::/*middleware(['permission:measure_unit_copy_all'])->*/
+                get('copyAll', 'MeasureUnitController@copyBaseDataAll')
+                    ->name('复制所有标准计量单位');
             });
 
         // 支付渠道管理
@@ -167,6 +182,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:payment_channel_search'])->*/
                 get('search', 'PaymentChannelController@search')
                     ->name('搜索支付渠道');
+                Route::/*middleware(['permission:payment_channel_copy_all'])->*/
+                get('copyAll', 'PaymentChannelController@copyBaseDataAll')
+                    ->name('复制所有标准支付渠道');
             });
 
         // 付款条款管理
@@ -190,6 +208,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:payment_term_search'])->*/
                 get('search', 'PaymentTermController@search')
                     ->name('付款条款搜索');
+                Route::/*middleware(['permission:payment_term_copy_all'])->*/
+                get('copyAll', 'PaymentTermController@copyBaseDataAll')
+                    ->name('复制所有标准付款条款');
             });
 
         // 发票方式管理
@@ -212,7 +233,10 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                     ->name('查询所有发票方式');
                 Route::/*middleware(['permission:invoice_mode_search'])->*/
                 get('search', 'InvoiceModeController@search')
-                    ->name('搜索放票方式');
+                    ->name('搜索发票方式');
+                Route::/*middleware(['permission:invoice_mode_copy_all'])->*/
+                get('copyAll', 'InvoiceModeController@copyBaseDataAll')
+                    ->name('复制所有标准发票方式');
             });
 
         // 发票税配置管理
@@ -236,6 +260,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:invoice_tax_config_search'])->*/
                 get('search', 'InvoiceTaxConfigController@search')
                     ->name('搜索发票税配置');
+                Route::/*middleware(['permission:invoice_tax_config_copy_all'])->*/
+                get('copyAll', 'InvoiceTaxConfigController@copyBaseDataAll')
+                    ->name('复制所有标准发票税配置');
             });
 
         // 业务分类
@@ -261,7 +288,7 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                     ->name('搜索业务分类');
                 Route::/*middleware(['permission:business_category_copy_all'])->*/
                 get('copyAll', 'BusinessCategoryController@copyBaseDataAll')
-                    ->name('复制所有基础数据');
+                    ->name('复制所有标准业务分类');
             });
 
         // 项目性质
@@ -269,22 +296,25 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
             ->group(function () {
                 Route::/*middleware(['permission:item_property_create'])->*/
                 post('create', 'ItemPropertyController@create')
-                    ->name('创建业务分类');
+                    ->name('创建项目性质');
                 Route::/*middleware(['permission:item_property_update'])->*/
                 post('update', 'ItemPropertyController@update')
-                    ->name('修改业务分类');
+                    ->name('修改项目性质');
                 Route::/*middleware(['permission:item_property_query'])->*/
                 get('query/{id}', 'ItemPropertyController@query')
-                    ->name('创建业务分类');
+                    ->name('创建项目性质');
                 Route::/*middleware(['permission:item_property_delete'])->*/
                 get('delete/{id}', 'ItemPropertyController@delete')
-                    ->name('删除业务分类');
+                    ->name('删除项目性质');
                 Route::/*middleware(['permission:item_property_all'])->*/
                 get('all', 'ItemPropertyController@all')
-                    ->name('查询所有业务分类');
+                    ->name('查询所有项目性质');
                 Route::/*middleware(['permission:item_property_search'])->*/
                 get('search', 'ItemPropertyController@search')
-                    ->name('搜索业务分类');
+                    ->name('搜索项目性质');
+                Route::/*middleware(['permission:item_property_copy_all'])->*/
+                get('copyAll', 'ItemPropertyController@copyBaseDataAll')
+                    ->name('复制所有标准项目性质');
             });
 
         // 部门
@@ -311,6 +341,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:department_move'])->*/
                 get('move/{newPid}/{id}', 'DepartmentController@move')
                     ->name('移动部门');
+                Route::/*middleware(['permission:department_copy_all'])->*/
+                get('copyAll', 'DepartmentController@copyBaseDataAll')
+                    ->name('复制所有标准公司部门');
             });
 
         // 保险类型
@@ -337,6 +370,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:insurance_category_move'])->*/
                 get('move/{newPid}/{id}', 'InsuranceCategoryController@move')
                     ->name('移动保险分类');
+                Route::/*middleware(['permission:insurance_category_copy_all'])->*/
+                get('copyAll', 'InsuranceCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准保险分类');
             });
 
         // 欠款类型
@@ -360,6 +396,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:debt_category_search'])->*/
                 get('search', 'DebtCategoryController@search')
                     ->name('搜索欠款分类');
+                Route::/*middleware(['permission:debt_category_copy_all'])->*/
+                get('copyAll', 'DebtCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准欠款分类');
             });
 
         // 工单类型
@@ -383,6 +422,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:work_order_category_search'])->*/
                 get('search', 'WorkOrderCategoryController@search')
                     ->name('搜索工单分类');
+                Route::/*middleware(['permission:work_order_category_copy_all'])->*/
+                get('copyAll', 'WorkOrderCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准工单分类');
             });
 
         // 出库类型
@@ -406,6 +448,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:out_picking_category_search'])->*/
                 get('search', 'OutPickingCategoryController@search')
                     ->name('搜索出库分类');
+                Route::/*middleware(['permission:out_picking_category_copy_all'])->*/
+                get('copyAll', 'OutPickingCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准出库类型');
             });
 
         // 退货原因
@@ -429,6 +474,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:return_reason_search'])->*/
                 get('search', 'ReturnReasonController@search')
                     ->name('搜索退货原因');
+                Route::/*middleware(['permission:return_reason_category_copy_all'])->*/
+                get('copyAll', 'ReturnReasonCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准退货原因');
             });
 
         // 卡类型
@@ -452,6 +500,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:card_category_search'])->*/
                 get('search', 'CardCategoryController@search')
                     ->name('搜索卡分类');
+                Route::/*middleware(['permission:card_category_copy_all'])->*/
+                get('copyAll', 'CardCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准卡分类');
             });
 
         // 身份类型
@@ -475,6 +526,9 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                 Route::/*middleware(['permission:id_category_search'])->*/
                 get('search', 'IdCategoryController@search')
                     ->name('搜索证件类型');
+                Route::/*middleware(['permission:id_category_copy_all'])->*/
+                get('copyAll', 'IdCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准证件类型');
             });
 
         // 门店等级
@@ -482,22 +536,25 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
             ->group(function () {
                 Route::/*middleware(['permission:store_level_create'])->*/
                 post('create', 'StoreLevelController@create')
-                    ->name('创建业务分类');
+                    ->name('创建门店等级');
                 Route::/*middleware(['permission:store_level_update'])->*/
                 post('update', 'StoreLevelController@update')
-                    ->name('修改业务分类');
+                    ->name('修改门店等级');
                 Route::/*middleware(['permission:store_level_query'])->*/
                 get('query/{id}', 'StoreLevelController@query')
-                    ->name('创建业务分类');
+                    ->name('创建门店等级');
                 Route::/*middleware(['permission:store_level_delete'])->*/
                 get('delete/{id}', 'StoreLevelController@delete')
-                    ->name('删除业务分类');
+                    ->name('删除门店等级');
                 Route::/*middleware(['permission:store_level_all'])->*/
                 get('all', 'StoreLevelController@all')
-                    ->name('查询所有业务分类');
+                    ->name('查询所有门店等级');
                 Route::/*middleware(['permission:store_level_search'])->*/
                 get('search', 'StoreLevelController@search')
-                    ->name('搜索业务分类');
+                    ->name('搜索门店等级');
+                Route::/*middleware(['permission:store_level_copy_all'])->*/
+                get('copyAll', 'StoreLevelController@copyBaseDataAll')
+                    ->name('复制所有标准门店等级');
             });
 
         // 保险公司
@@ -505,22 +562,25 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
             ->group(function () {
                 Route::/*middleware(['permission:insurance_company_create'])->*/
                 post('create', 'InsuranceCompanyController@create')
-                    ->name('创建业务分类');
+                    ->name('创建保险公司');
                 Route::/*middleware(['permission:insurance_company_update'])->*/
                 post('update', 'InsuranceCompanyController@update')
-                    ->name('修改业务分类');
+                    ->name('修改保险公司');
                 Route::/*middleware(['permission:insurance_company_query'])->*/
                 get('query/{id}', 'InsuranceCompanyController@query')
-                    ->name('创建业务分类');
+                    ->name('创建保险公司');
                 Route::/*middleware(['permission:insurance_company_delete'])->*/
                 get('delete/{id}', 'InsuranceCompanyController@delete')
-                    ->name('删除业务分类');
+                    ->name('删除保险公司');
                 Route::/*middleware(['permission:insurance_company_all'])->*/
                 get('all', 'InsuranceCompanyController@all')
-                    ->name('查询所有业务分类');
+                    ->name('查询所有保险公司');
                 Route::/*middleware(['permission:insurance_company_search'])->*/
                 get('search', 'InsuranceCompanyController@search')
-                    ->name('搜索业务分类');
+                    ->name('搜索保险公司');
+                Route::/*middleware(['permission:insurance_company_copy_all'])->*/
+                get('copyAll', 'InsuranceCompanyController@copyBaseDataAll')
+                    ->name('复制所有标准保险公司');
             });
 
         // 包装方式
@@ -528,21 +588,24 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
             ->group(function () {
                 Route::/*middleware(['permission:packaging_category_create'])->*/
                 post('create', 'PackagingCategoryController@create')
-                    ->name('创建业务分类');
+                    ->name('创建包装方式');
                 Route::/*middleware(['permission:packaging_category_update'])->*/
                 post('update', 'PackagingCategoryController@update')
-                    ->name('修改业务分类');
+                    ->name('修改包装方式');
                 Route::/*middleware(['permission:packaging_category_query'])->*/
                 get('query/{id}', 'PackagingCategoryController@query')
-                    ->name('创建业务分类');
+                    ->name('创建包装方式');
                 Route::/*middleware(['permission:packaging_category_delete'])->*/
                 get('delete/{id}', 'PackagingCategoryController@delete')
-                    ->name('删除业务分类');
+                    ->name('删除包装方式');
                 Route::/*middleware(['permission:packaging_category_all'])->*/
                 get('all', 'PackagingCategoryController@all')
-                    ->name('查询所有业务分类');
+                    ->name('查询所有包装方式');
                 Route::/*middleware(['permission:packaging_category_search'])->*/
                 get('search', 'PackagingCategoryController@search')
-                    ->name('搜索业务分类');
+                    ->name('搜索包装方式');
+                Route::/*middleware(['permission:packaging_category_copy_all'])->*/
+                get('copyAll', 'PackagingCategoryController@copyBaseDataAll')
+                    ->name('复制所有标准包装方式');
             });
     });

@@ -2,7 +2,7 @@
 
 namespace App\Model\DB\Mysql;
 
-class MaterialBrand extends SAASModel
+class MaterialBrand extends CommonModel
 {
     protected $table = 'material_brand';
     protected $guarded = [];
