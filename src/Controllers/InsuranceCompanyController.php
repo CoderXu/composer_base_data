@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\InsuranceCompany;
 
 class InsuranceCompanyController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '保险公司';
     protected $mIsAutoSetNameFirstChar = true;
 

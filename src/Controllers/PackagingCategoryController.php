@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\PackagingCategory;
 
 class PackagingCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '包装方式';
     protected $mIsAutoSetNameFirstChar = true;
 

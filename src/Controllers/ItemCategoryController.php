@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\ItemCategory;
 
 class ItemCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '项目分类';
     protected $mIsInfiniteCategory = true;
     protected $mInfiniteCategoryParentName = 'pid';

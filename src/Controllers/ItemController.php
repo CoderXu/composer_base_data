@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\Item;
 use App\Model\DB\Mysql\ItemCategory;
 
@@ -12,6 +13,8 @@ use App\Model\DB\Mysql\ItemCategory;
  */
 class ItemController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '项目';
     protected $mIsAutoSetNameFirstChar = true;
 

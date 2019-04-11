@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\ReturnReason;
 
 class ReturnReasonController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '退货原因';
     protected $mIsAutoSetNameFirstChar = true;
 

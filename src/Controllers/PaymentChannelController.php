@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\PaymentChannel;
 
 class PaymentChannelController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '支付渠道';
     protected $mIsAutoSetNameFirstChar = true;
 

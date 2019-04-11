@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\CardCategory;
 
 class CardCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '卡类型';
     protected $mIsAutoSetNameFirstChar = true;
 

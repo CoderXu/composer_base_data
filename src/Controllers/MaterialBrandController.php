@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\MaterialBrand;
 use App\Utils\ElasticSearch\MaterialBrandUtil;
 use Illuminate\Database\Eloquent\Model;
 
 class MaterialBrandController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '物料品牌';
     protected $mIsTransactionPut = true;
     protected $mIsAutoSetNameFirstChar = true;

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\IdCategory;
 
 class IdCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '证件类型';
     protected $mIsAutoSetNameFirstChar = true;
 

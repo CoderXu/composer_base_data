@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\PaymentTerm;
 
 class PaymentTermController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '付款条款';
     protected $mIsAutoSetNameFirstChar = true;
 

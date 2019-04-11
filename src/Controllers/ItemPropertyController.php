@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\ItemProperty;
 
 class ItemPropertyController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '项目性质';
     protected $mIsAutoSetNameFirstChar = true;
 

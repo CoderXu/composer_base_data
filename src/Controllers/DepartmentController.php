@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\Department;
 
 class DepartmentController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '部门';
     protected $mIsAutoSetNameFirstChar = true;
     protected $mIsInfiniteCategory = true;

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\MaterialCategory;
 use App\Utils\ElasticSearch\MaterialCategoryUtil;
 use Illuminate\Database\Eloquent\Model;
 
 class MaterialCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '物料分类';
     protected $mIsInfiniteCategory = true;
     protected $mIsInfiniteCategoryLevel = true;

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\StoreLevel;
 
 class StoreLevelController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '门店等级';
     protected $mIsAutoSetNameFirstChar = true;
 

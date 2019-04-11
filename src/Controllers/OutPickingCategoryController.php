@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Extend\CopyNormalBaseData;
 use App\Model\DB\Mysql\OutPickingCategory;
 
 class OutPickingCategoryController extends Controller
 {
+    use CopyNormalBaseData;
+
     protected $mActionTitle = '出库类型';
     protected $mIsAutoSetNameFirstChar = true;
 
