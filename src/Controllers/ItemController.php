@@ -52,19 +52,19 @@ class ItemController extends Controller
                 'max:191',
             ],
             'norm_man_hour' => [
-                'required',
+//                'required',
                 'numeric',
                 'min:0',
                 'max:1000000000',
             ],
             'assess_man_hour' => [
-                'required',
+//                'required',
                 'numeric',
                 'min:0',
                 'max:1000000000',
             ],
             'charge_man_hour' => [
-                'required',
+//                'required',
                 'numeric',
                 'min:0',
                 'max:1000000000',
@@ -119,6 +119,14 @@ class ItemController extends Controller
         $params = parent::initPutValidation();
         $params = $this->validateItemCategory($params);
 
+        // 默认值 --- start
+        if (!array_key_exists('norm_man_hour', $params))
+            $params['norm_man_hour'] = 1;
+        if (!array_key_exists('assess_man_hour', $params))
+            $params['assess_man_hour'] = 1;
+        if (!array_key_exists('charge_man_hour', $params))
+            $params['charge_man_hour'] = 1;
+        // 默认值 --- end
         return $params;
     }
 
@@ -182,7 +190,7 @@ class ItemController extends Controller
         if (!empty($this->getDefaultSearchWith()))
             $this->mModel = $this->mModel->with($this->getDefaultSearchWith());
         foreach ($requestParams as $key => $value) {
-            if (in_array($key, ['name','name_first_char'])) {
+            if (in_array($key, ['name', 'name_first_char'])) {
                 $this->mModel = $this->mModel
                     ->where($key
                         , 'like'
