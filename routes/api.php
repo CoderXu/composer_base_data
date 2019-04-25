@@ -161,30 +161,56 @@ Route::middleware(\App\Http\Middleware\TokenValidate::class)
                     ->name('复制所有标准计量单位');
             });
 
-        // 支付渠道管理
+        // 收款渠道管理
         Route::prefix('payment_channel')
             ->group(function () {
                 Route::/*middleware(['permission:payment_channel_create'])->*/
                 post('create', 'PaymentChannelController@create')
-                    ->name('创建支付渠道');
+                    ->name('创建收款渠道');
                 Route::/*middleware(['permission:payment_channel_update'])->*/
                 post('update', 'PaymentChannelController@update')
-                    ->name('更新支付渠道');
+                    ->name('更新收款渠道');
                 Route::/*middleware(['permission:payment_channel_delete'])->*/
                 get('delete/{id}', 'PaymentChannelController@delete')
-                    ->name('删除支付渠道');
+                    ->name('删除收款渠道');
                 Route::/*middleware(['permission:payment_channel_query'])->*/
                 get('query/{id}', 'PaymentChannelController@query')
-                    ->name('根据ID查询支付渠道');
+                    ->name('根据ID查询收款渠道');
                 Route::/*middleware(['permission:payment_channel_all'])->*/
                 get('all', 'PaymentChannelController@all')
-                    ->name('查询所有支付渠道');
+                    ->name('查询所有收款渠道');
                 Route::/*middleware(['permission:payment_channel_search'])->*/
                 get('search', 'PaymentChannelController@search')
-                    ->name('搜索支付渠道');
+                    ->name('搜索收款渠道');
                 Route::/*middleware(['permission:payment_channel_copy_all'])->*/
                 get('copyAll', 'PaymentChannelController@copyBaseDataAll')
-                    ->name('复制所有标准支付渠道');
+                    ->name('复制所有标准收款渠道');
+            });
+
+        // 付款渠道管理
+        Route::prefix('payment_out_channel')
+            ->group(function () {
+                Route::/*middleware(['permission:payment_out_channel_create'])->*/
+                post('create', 'PaymentOutChannelController@create')
+                    ->name('创建付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_update'])->*/
+                post('update', 'PaymentOutChannelController@update')
+                    ->name('更新付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_delete'])->*/
+                get('delete/{id}', 'PaymentOutChannelController@delete')
+                    ->name('删除付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_query'])->*/
+                get('query/{id}', 'PaymentOutChannelController@query')
+                    ->name('根据ID查询付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_all'])->*/
+                get('all', 'PaymentOutChannelController@all')
+                    ->name('查询所有付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_search'])->*/
+                get('search', 'PaymentOutChannelController@search')
+                    ->name('搜索付款渠道');
+                Route::/*middleware(['permission:payment_out_channel_copy_all'])->*/
+                get('copyAll', 'PaymentOutChannelController@copyBaseDataAll')
+                    ->name('复制所有标准付款渠道');
             });
 
         // 付款条款管理

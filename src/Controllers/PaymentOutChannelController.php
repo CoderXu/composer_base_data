@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Extend\CopyNormalBaseData;
-use App\Model\DB\Mysql\PaymentChannel;
+use App\Model\DB\Mysql\PaymentOutChannel;
 
-class PaymentChannelController extends Controller
+class PaymentOutChannelController extends Controller
 {
     use CopyNormalBaseData;
 
-    protected $mActionTitle = '收款渠道';
+    protected $mActionTitle = '付款渠道';
     protected $mIsAutoSetNameFirstChar = true;
 
-    public function __construct(PaymentChannel $paymentChannel)
+    public function __construct(PaymentOutChannel $paymentChannel)
     {
         $this->mModel = $paymentChannel;
         parent::__construct();
